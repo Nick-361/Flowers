@@ -73,11 +73,11 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex flex-col justify-center items-center pt-10">
+      <div className="flex flex-col justify-center items-center pt-10 text-black">
         <p className="text-3xl md:text-4xl lg:text-5xl font-Satisfy">Good Morning Mommy,</p>
         <p className="text-2xl md:text-3xl lg:text-4xl font-Satisfy px-4 text-center">{greeting}</p>
       </div>
-      <p className="text-3xl md:text-4xl lg:text-5xl font-Satisfy pt-8 text-center">Here are your daily flowers!</p>
+      <p className="text-3xl text-black md:text-4xl lg:text-5xl font-Satisfy pt-8 text-center">Here are your daily flowers!</p>
       {flowers !== '' && 
         <div className="flex overflow-y-hidden justify-center items-top pt-6">
           <Image
