@@ -46,9 +46,9 @@ export default function Home() {
 
 
   return (
-    <div className="bg-[url('/backgrounds/flowery_letter.jpg')] h-screen w-screen bg-cover bg-no-repeat bg-center">
+    <div className="bg-[url('/backgrounds/flowery_letter.jpg')] h-screen w-screen bg-cover bg-no-repeat bg-center flex flex-col">
       <div className="flex justify-center w-fit items-center bg bg-black/50 backdrop-blur-md flex-wrap">
-        <div className="pt-2 font-Great_Vibes text-white text-5xl md:text-6xl">Toria&lsquo;s Flowers</div>
+        <div className="pt-2 font-Great_Vibes text-white text-5xl md:text-6xl lg:text-7xl">Toria&lsquo;s Flowers</div>
         <div className="flex justify-center p-4 pt-2 w-fit items-center gap-3 flex-wrap">
           <Image
             src="/images/knocking.jpg"
@@ -74,21 +74,21 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center pt-8">
-        <p className="text-3xl font-Satisfy">Good Morning Mommy,</p>
-        <p className="text-2xl font-Satisfy px-4 text-center">{greeting}</p>
+        <p className="text-3xl md:text-4xl lg:text-5xl font-Satisfy">Good Morning Mommy,</p>
+        <p className="text-2xl md:text-3xl lg:text-4xl font-Satisfy px-4 text-center">{greeting}</p>
       </div>
-      <p className="text-3xl font-Satisfy pt-8 text-center">Here are your daily flowers!</p>
+      <p className="text-3xl md:text-4xl lg:text-5xl font-Satisfy pt-8 text-center">Here are your daily flowers!</p>
       {flowers !== '' && 
-      <div className="flex justify-center items-center">
-      <Image
-            src={flowers}
-            width={400}
-            height={400}
-            alt="Knocking on door"
-            className="h-[30%] w-auto p-8"
-            priority={true}
-          />
-          </div>
+        <div className="flex flex-grow justify-center items-center">
+          <Image
+                src={flowers}
+                width={300}
+                height={300}
+                alt="Knocking on door"
+                className="max-w-full max-h-full object-contain"
+                priority={true}
+              />
+        </div>
       }
     </div>
   );
