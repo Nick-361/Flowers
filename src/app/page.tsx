@@ -47,8 +47,8 @@ export default function Home() {
 
   return (
     <div className="bg-[url('/backgrounds/flowery_letter.jpg')] h-screen w-screen bg-cover bg-no-repeat bg-center flex flex-col">
-      <div className="flex justify-center w-fit items-center bg bg-black/50 backdrop-blur-md flex-wrap">
-        <div className="pt-2 font-Great_Vibes text-white text-5xl md:text-6xl lg:text-7xl">Toria&lsquo;s Flowers</div>
+      <div className="flex justify-center items-center bg bg-black/50 backdrop-blur-md flex-wrap flex-col">
+        <div className="pt-4 font-Great_Vibes text-white text-5xl md:text-6xl lg:text-7xl">Toria&lsquo;s Flowers</div>
         <div className="flex justify-center p-4 pt-2 w-fit items-center gap-3 flex-wrap">
           <Image
             src="/images/knocking.jpg"
@@ -79,13 +79,13 @@ export default function Home() {
       </div>
       <p className="text-3xl md:text-4xl lg:text-5xl font-Satisfy pt-8 text-center">Here are your daily flowers!</p>
       {flowers !== '' && 
-        <div className="flex flex-grow justify-center items-center">
+        <div className="flex justify-center items-top pt-6">
           <Image
                 src={flowers}
                 width={300}
                 height={300}
                 alt="Knocking on door"
-                className="max-w-full max-h-full object-contain"
+                className="max-h-[60%] w-auto h-auto"
                 priority={true}
               />
         </div>
