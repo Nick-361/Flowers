@@ -3,7 +3,7 @@ import Image from "next/image";
 import { greetings } from './greetings';
 import { getGreetingForToday, saveGreetingForToday } from './lib/greetingUtils';
 import { useEffect, useState } from "react";
-import { getDayOfYear, getFlowersForToday, saveFlowersForToday } from './lib/flowerUtils';
+import { getDayOfYear, getFlowersForToday, isChristmasDay, isValentinesDay, saveFlowersForToday } from './lib/flowerUtils';
 
 
 export default function Home() {
@@ -26,12 +26,18 @@ export default function Home() {
       const randomGreeting = shuffleArray(greetings).slice(0, 1)[0];
       setGreeting(randomGreeting);
       saveGreetingForToday(randomGreeting); // Save the new greeting for today
-      
 
-      const day = getDayOfYear() % 120
-      const image = "/flowers/flower" + day.toString() + ".png"
-      setFlowers(image)
-      saveFlowersForToday(image)
+      let image = ""
+      if (isChristmasDay()){
+        image = "/special_flowers/christmasflowers.png"
+      }else if (isValentinesDay()){
+        image = "/special_flowers/valentinesflowers.png"
+      } else{
+        const day = getDayOfYear() % 122
+        image = "/flowers/flower" + day.toString() + ".png"
+        setFlowers(image)
+        saveFlowersForToday(image)
+      }
     }
 
     if(storedFlowers){
