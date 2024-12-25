@@ -30,15 +30,18 @@ const isValentinesDay = (): boolean => {
 
 // Check if flowers is stored for today
 const getFlowersForToday = () => {
-    const today = getDayOfYear()
+  if (typeof window === 'undefined') {
+    return null; // Prevent accessing localStorage during SSR
+  }
+  const today = getDayOfYear();
   const savedGreeting = localStorage.getItem('flowers');
   const savedDate = localStorage.getItem('flowerDay');
 
   if (savedDate === today.toString()) {
-    return savedGreeting; // Return the saved greeting if it's from today
+    return savedGreeting;
   }
-  return null; // No greeting stored for today
-};
+  return null;
+}
 
 // Save the new flowers for the day
 const saveFlowersForToday = (flowers: string) => {
