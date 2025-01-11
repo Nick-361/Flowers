@@ -8,7 +8,7 @@ import { getDayOfYear, getFlowersForToday, isChristmasDay, isValentinesDay, save
 
 export default function Home() {
   const [greeting, setGreeting] = useState<string>('');
-  const [flowers, setFlowers] = useState<string>('')
+  const [flowers, setFlowers] = useState<string>('/flowers/flower0.png');
 
   // Function to shuffle greetings and pick a random one
   const shuffleArray = (array: string[]) => array.sort(() => Math.random() - 0.5);
@@ -17,38 +17,37 @@ export default function Home() {
   useEffect(() => {
     const storedGreeting = getGreetingForToday();
     const storedFlowers = getFlowersForToday();
-
+  
     if (storedGreeting && storedFlowers) {
-      setGreeting(storedGreeting); // Use the stored greeting
-      setFlowers(storedFlowers)
+      setGreeting(storedGreeting);
+      setFlowers(storedFlowers);
     } else {
-      // Pick a new greeting if no greeting is stored for today
       const randomGreeting = shuffleArray(greetings).slice(0, 1)[0];
       setGreeting(randomGreeting);
-      saveGreetingForToday(randomGreeting); // Save the new greeting for today
-
-      let image = ""
-      if (isChristmasDay()){
-        image = "/special_flowers/christmasflowers.png"
-      }else if (isValentinesDay()){
-        image = "/special_flowers/valentinesflowers.png"
-      } else{
-        const day = getDayOfYear() % 22
-        image = "/flowers/flower" + day.toString() + ".png"
-        setFlowers(image)
-        saveFlowersForToday(image)
+      saveGreetingForToday(randomGreeting);
+  
+      let image = "";
+      if (isChristmasDay()) {
+        image = "/special_flowers/christmasflowers.png";
+      } else if (isValentinesDay()) {
+        image = "/special_flowers/valentinesflowers.png";
+      } else {
+        const day = getDayOfYear() % 22;
+        image = `/flowers/flower${day}.png`;
       }
-    }
-
-    if(storedFlowers){
-
+  
+      setFlowers(image);
+      saveFlowersForToday(image);
     }
   }, []);
 
   // If flowers is null, return a placeholder or loading state
   if (flowers === null) {
+    console.log("Null")
     return <div></div>; // Or use a loading spinner
   }
+
+  console.log("Flowers: ", flowers)
 
 
   return (
