@@ -33,7 +33,7 @@ export default function Home() {
       }else if (isValentinesDay()){
         image = "/special_flowers/valentinesflowers.png"
       } else{
-        const day = getDayOfYear() % 122
+        const day = getDayOfYear() % 22
         image = "/flowers/flower" + day.toString() + ".png"
         setFlowers(image)
         saveFlowersForToday(image)
